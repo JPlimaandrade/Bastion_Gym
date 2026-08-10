@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Bastion GYM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../src/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="auth-container">
+            <div class="auth-image" style="background-image: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80');"></div>
+            
+            <div class="auth-content">
+                <div class="auth-card">
+                    <div class="logo-container">
+                        <img src="../src/img/logo/logo_fundo_transparente.png" alt="Bastion GYM Logo">
+                        <h1>Bastion <span>GYM</span></h1>
+                    </div>
+                    
+                    <h2 class="auth-title">Crie sua conta</h2>
+                    <p class="auth-subtitle">Junte-se ao Bastion GYM e transforme seu corpo</p>
+                    
+                    <form id="cadastroForm">
+                        <div class="form-group">
+                            <label for="nome">Nome completo</label>
+                            <input 
+                                type="text" 
+                                id="nome" 
+                                name="nome" 
+                                placeholder="Seu nome completo"
+                                required
+                            >
+                            <span class="error-message">Por favor, insira seu nome completo</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                placeholder="seu@email.com"
+                                required
+                            >
+                            <span class="error-message">Por favor, insira um e-mail válido</span>
+                        </div>
+                        
+                        <div class="form-group password-group">
+                            <label for="password">Senha</label>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                placeholder="••••••••"
+                                required
+                            >
+                            <button type="button" class="toggle-password" onclick="togglePassword('password')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <span class="error-message">A senha deve ter pelo menos 6 caracteres</span>
+                        </div>
+                        
+                        <div class="form-group password-group">
+                            <label for="confirmPassword">Confirmar senha</label>
+                            <input 
+                                type="password" 
+                                id="confirmPassword" 
+                                name="confirmPassword" 
+                                placeholder="••••••••"
+                                required
+                            >
+                            <button type="button" class="toggle-password" onclick="togglePassword('confirmPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <span class="error-message">As senhas não coincidem</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telefone">Telefone (opcional)</label>
+                            <input 
+                                type="tel" 
+                                id="telefone" 
+                                name="telefone" 
+                                placeholder="(00) 00000-0000"
+                            >
+                        </div>
+                        
+                        <div class="remember-forgot">
+                            <label>
+                                <input type="checkbox" name="terms" required>
+                                Concordo com os <a href="#">termos de uso</a>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-user-plus"></i> Criar conta
+                        </button>
+                        
+                        <button type="button" class="btn-secondary" onclick="window.location.href='Login.html'">
+                            <i class="fas fa-arrow-left"></i> Voltar ao login
+                        </button>
+                    </form>
+                    
+                    <div class="auth-links">
+                        <p>Já tem uma conta? <a href="Login.html">Faça login</a></p>
+                        <p style="margin-top: 10px;"><a href="Home.html"><i class="fas fa-arrow-left"></i> Voltar para Home</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const button = input.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+        
+        document.getElementById('cadastroForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nome = document.getElementById('nome');
+            const email = document.getElementById('email');
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirmPassword');
+            const telefone = document.getElementById('telefone');
+            let isValid = true;
+            
+            // Validação de nome
+            if (nome.value.trim().length < 3) {
+                nome.classList.add('error');
+                isValid = false;
+            } else {
+                nome.classList.remove('error');
+            }
+            
+            // Validação de e-mail
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.value)) {
+                email.classList.add('error');
+                isValid = false;
+            } else {
+                email.classList.remove('error');
+            }
+            
+            // Validação de senha
+            if (password.value.length < 6) {
+                password.classList.add('error');
+                isValid = false;
+            } else {
+                password.classList.remove('error');
+            }
+            
+            // Validação de confirmação de senha
+            if (password.value !== confirmPassword.value) {
+                confirmPassword.classList.add('error');
+                isValid = false;
+            } else {
+                confirmPassword.classList.remove('error');
+            }
+            
+            // Validação de telefone (se preenchido)
+            if (telefone.value.trim() !== '') {
+                const phoneRegex = /^\(\d{2}\)\s\d{4,5}-\d{4}$/;
+                if (!phoneRegex.test(telefone.value)) {
+                    telefone.classList.add('error');
+                    isValid = false;
+                } else {
+                    telefone.classList.remove('error');
+                }
+            }
+            
+            if (isValid) {
+                // Aqui você adicionaria a lógica de cadastro
+                alert('Cadastro realizado com sucesso! (Demo)');
+                // window.location.href = 'Login.html';
+            }
+        });
+        
+        // Remover erro ao digitar
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', function() {
+                this.classList.remove('error');
+            });
+        });
+        
+        // Máscara de telefone
+        document.getElementById('telefone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            
+            if (value.length > 11) {
+                value = value.slice(0, 11);
+            }
+            
+            if (value.length > 0) {
+                value = '(' + value;
+            }
+            if (value.length > 3) {
+                value = value.slice(0, 3) + ') ' + value.slice(3);
+            }
+            if (value.length > 10) {
+                value = value.slice(0, 10) + '-' + value.slice(10);
+            }
+            
+            e.target.value = value;
+        });
+    </script>
+</body>
+</html>

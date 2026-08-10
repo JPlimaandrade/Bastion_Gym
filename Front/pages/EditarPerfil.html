@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil - Bastion GYM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../src/css/styles.css">
+    <style>
+        .edit-profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
+        .edit-profile-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .edit-profile-header h1 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+        
+        .edit-profile-header p {
+            color: var(--text-muted);
+        }
+        
+        .edit-profile-form {
+            background: var(--background-card);
+            border: 1px solid rgba(249, 115, 22, 0.2);
+            border-radius: var(--border-radius);
+            padding: 40px;
+        }
+        
+        .avatar-upload {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(249, 115, 22, 0.2);
+        }
+        
+        .avatar-preview {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 3rem;
+            color: var(--text-color);
+            border: 4px solid rgba(249, 115, 22, 0.3);
+        }
+        
+        .upload-btn {
+            background: var(--secondary-light);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            color: var(--text-color);
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .upload-btn:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+        }
+        
+        .form-section h3 {
+            color: var(--text-color);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-section h3 i {
+            color: var(--primary-color);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--secondary-light);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: rgba(22, 33, 62, 0.8);
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+        }
+        
+        .form-group select {
+            cursor: pointer;
+        }
+        
+        .form-group select option {
+            background: var(--secondary-light);
+            color: var(--text-color);
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(249, 115, 22, 0.2);
+        }
+        
+        .btn-cancel {
+            padding: 14px 30px;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius);
+            color: var(--text-color);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .btn-cancel:hover {
+            border-color: var(--error-color);
+            color: var(--error-color);
+        }
+        
+        .btn-save {
+            padding: 14px 30px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            border: none;
+            border-radius: var(--border-radius);
+            color: var(--text-color);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-save:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .edit-profile-container {
+                padding: 20px;
+            }
+            
+            .edit-profile-form {
+                padding: 25px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+            }
+            
+            .btn-cancel,
+            .btn-save {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="home-container">
+        <div class="home-header">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <img src="../src/img/logo/logo_fundo_transparente.png" alt="Bastion GYM Logo" class="home-logo">
+                <h1 class="home-title">Bastion <span>GYM</span></h1>
+            </div>
+            
+            <button class="hamburger-menu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <nav class="home-nav">
+                <a href="Home.html"><i class="fas fa-home"></i> Home</a>
+                <a href="Perfil.html"><i class="fas fa-user"></i> Perfil</a>
+                <a href="Treinos.html"><i class="fas fa-dumbbell"></i> Treinos</a>
+                <a href="Login.html"><i class="fas fa-sign-out-alt"></i> Sair</a>
+            </nav>
+        </div>
+        
+        <div class="edit-profile-container">
+            <div class="edit-profile-header">
+                <h1>Editar Perfil</h1>
+                <p>Atualize suas informações pessoais</p>
+            </div>
+            
+            <form class="edit-profile-form">
+                <div class="avatar-upload">
+                    <div class="avatar-preview">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <button type="button" class="upload-btn">
+                        <i class="fas fa-camera"></i> Alterar Foto
+                    </button>
+                </div>
+                
+                <div class="form-section">
+                    <h3><i class="fas fa-user"></i> Informações Básicas</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo</label>
+                            <input type="text" id="nome" name="nome" value="João Silva">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" value="joao.silva@email.com">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" name="telefone" value="(11) 98765-4321">
+                        </div>
+                        <div class="form-group">
+                            <label for="nascimento">Data de Nascimento</label>
+                            <input type="date" id="nascimento" name="nascimento" value="1996-05-15">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3><i class="fas fa-heartbeat"></i> Informações Físicas</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="peso">Peso (kg)</label>
+                            <input type="number" id="peso" name="peso" value="75" step="0.1">
+                        </div>
+                        <div class="form-group">
+                            <label for="altura">Altura (m)</label>
+                            <input type="number" id="altura" name="altura" value="1.78" step="0.01">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="objetivo">Objetivo</label>
+                            <select id="objetivo" name="objetivo">
+                                <option value="massa">Ganho de Massa</option>
+                                <option value="emagrecimento">Emagrecimento</option>
+                                <option value="definicao">Definição</option>
+                                <option value="resistencia">Resistência</option>
+                                <option value="saude">Saúde Geral</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nivel">Nível de Experiência</label>
+                            <select id="nivel" name="nivel">
+                                <option value="iniciante">Iniciante</option>
+                                <option value="intermediario">Intermediário</option>
+                                <option value="avancado">Avançado</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3><i class="fas fa-lock"></i> Alterar Senha</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="senha-atual">Senha Atual</label>
+                            <input type="password" id="senha-atual" name="senha-atual" placeholder="Deixe em branco para não alterar">
+                        </div>
+                        <div class="form-group">
+                            <label for="nova-senha">Nova Senha</label>
+                            <input type="password" id="nova-senha" name="nova-senha" placeholder="Mínimo 6 caracteres">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmar-senha">Confirmar Nova Senha</label>
+                        <input type="password" id="confirmar-senha" name="confirmar-senha" placeholder="Confirme a nova senha">
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" onclick="window.location.href='Perfil.html'">
+                        <i class="fas fa-times"></i> Cancelar
+                    </button>
+                    <button type="submit" class="btn-save">
+                        <i class="fas fa-save"></i> Salvar Alterações
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+        <footer class="home-footer">
+            <img src="../src/img/logo/logo_fundo_transparente.png" alt="Bastion GYM Logo" class="footer-logo">
+            <p>&copy; 2024 Bastion GYM. Todos os direitos reservados.</p>
+        </footer>
+        
+        <button class="ai-float-btn" onclick="openAIChat()">
+            <i class="fas fa-robot"></i>
+        </button>
+        
+        <div class="ai-sidebar-overlay" onclick="closeAIChat()"></div>
+        
+        <div class="ai-sidebar">
+            <div class="ai-sidebar-header">
+                <h3><i class="fas fa-robot"></i> IA Fitness</h3>
+                <button class="ai-close-btn" onclick="closeAIChat()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="ai-sidebar-content">
+                <div class="ai-sidebar-message ai">
+                    <div class="ai-sidebar-message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="ai-sidebar-message-content">
+                        <p>Olá! Sou sua IA Fitness do Bastion GYM. Como posso ajudar você hoje?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ai-sidebar-input-area">
+                <input type="text" class="ai-sidebar-input" placeholder="Digite sua mensagem...">
+                <button class="ai-sidebar-send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function openAIChat() {
+            if (window.innerWidth <= 768) {
+                window.location.href = 'IAChatMobile.html';
+            } else {
+                document.querySelector('.ai-sidebar').classList.add('active');
+                document.querySelector('.ai-sidebar-overlay').classList.add('active');
+            }
+        }
+        
+        function closeAIChat() {
+            document.querySelector('.ai-sidebar').classList.remove('active');
+            document.querySelector('.ai-sidebar-overlay').classList.remove('active');
+        }
+        
+        function toggleMenu() {
+            const nav = document.querySelector('.home-nav');
+            const hamburger = document.querySelector('.hamburger-menu');
+            nav.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
