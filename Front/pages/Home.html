@@ -14,17 +14,6 @@
                 <img src="../src/img/logo/logo_fundo_transparente.png" alt="Bastion GYM Logo" class="home-logo">
                 <h1 class="home-title">Bastion <span>GYM</span></h1>
             </div>
-            
-            <button class="hamburger-menu" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            
-            <nav class="home-nav">
-                <a href="Login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
-                <a href="Cadastro.html"><i class="fas fa-user-plus"></i> Cadastro</a>
-            </nav>
         </div>
         
         <div class="hero-section">
@@ -50,17 +39,6 @@
                             <span class="stat-label">Aberto</span>
                         </div>
                     </div>
-                    
-                    <div class="action-buttons">
-                        <a href="Treinos.html" class="action-btn">
-                            <i class="fas fa-dumbbell"></i>
-                            Treinos
-                        </a>
-                        <a href="Perfil.html" class="action-btn">
-                            <i class="fas fa-user"></i>
-                            Perfil
-                        </a>
-                    </div>
                 </div>
                 
                 <div class="hero-image">
@@ -71,80 +49,27 @@
             </div>
         </div>
         
-        <div class="features-section">
-            <h2 class="features-section-title">Por que escolher <span>Bastion GYM</span>?</h2>
-            
-            <div class="features-carousel">
-                <div class="features-carousel-track" id="featuresTrack">
-                    <div class="features-carousel-slide">
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-dumbbell"></i>
-                            </div>
-                            <h3>Equipamentos Premium</h3>
-                            <p>Equipamentos de alta qualidade para garantir o melhor do seu treino com tecnologia de ponta.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="features-carousel-slide">
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-user-tie"></i>
-                            </div>
-                            <h3>Profissionais Qualificados</h3>
-                            <p>Personal trainers experientes e certificados para orientar sua jornada fitness.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="features-carousel-slide">
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <h3>24/7 Aberto</h3>
-                            <p>Funcionamento 24 horas para você treinar no horário que melhor se adapta à sua rotina.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="features-carousel-slide">
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <h3>Comunidade Ativa</h3>
-                            <p>Faça parte de uma comunidade motivada e focada em resultados saudáveis.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="features-carousel-slide">
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-heartbeat"></i>
-                            </div>
-                            <h3>Treinos Personalizados</h3>
-                            <p>Programas de treino adaptados aos seus objetivos específicos e necessidades.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="features-carousel-slide">
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-mobile-alt"></i>
-                            </div>
-                            <h3>App Integrado</h3>
-                            <p>Acompanhe seu progresso, agende aulas e muito mais através do nosso aplicativo.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
         <footer class="home-footer">
             <img src="../src/img/logo/logo_fundo_transparente.png" alt="Bastion GYM Logo" class="footer-logo">
             <p>&copy; 2024 Bastion GYM. Todos os direitos reservados.</p>
         </footer>
         
-        <button class="ai-float-btn" onclick="openAIChat()">
+        <nav class="bottom-nav">
+            <a href="Home.html" class="active">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="Treinos.html">
+                <i class="fas fa-dumbbell"></i>
+                <span>Treinos</span>
+            </a>
+            <a href="Perfil.html">
+                <i class="fas fa-user"></i>
+                <span>Perfil</span>
+            </a>
+        </nav>
+        
+        <button class="ai-float-btn" onclick="openAIChat()" aria-label="Abrir chat com IA">
             <i class="fas fa-robot"></i>
         </button>
         
@@ -153,7 +78,7 @@
         <div class="ai-sidebar">
             <div class="ai-sidebar-header">
                 <h3><i class="fas fa-robot"></i> IA Fitness</h3>
-                <button class="ai-close-btn" onclick="closeAIChat()">
+                <button class="ai-close-btn" onclick="closeAIChat()" aria-label="Fechar chat">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
@@ -192,51 +117,6 @@
             document.querySelector('.ai-sidebar').classList.remove('active');
             document.querySelector('.ai-sidebar-overlay').classList.remove('active');
         }
-        
-        function toggleMenu() {
-            const nav = document.querySelector('.home-nav');
-            const hamburger = document.querySelector('.hamburger-menu');
-            nav.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        }
-        
-        // Carrossel com navegação manual
-        let currentSlide = 0;
-        const track = document.getElementById('featuresTrack');
-        const slides = document.querySelectorAll('.features-carousel-slide');
-        const totalSlides = slides.length;
-        
-        function moveCarousel(direction) {
-            const slideWidth = slides[0].offsetWidth + 20; // including gap
-            
-            currentSlide += direction;
-            
-            if (currentSlide < 0) {
-                currentSlide = totalSlides - 1;
-            }
-            if (currentSlide >= totalSlides) {
-                currentSlide = 0;
-            }
-            
-            track.style.transition = 'transform 0.5s ease';
-            track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
-            
-            updateCarouselButtons();
-        }
-        
-        function updateCarouselButtons() {
-            document.getElementById('prevBtn').disabled = false;
-            document.getElementById('nextBtn').disabled = false;
-        }
-        
-        // Ajustar no resize
-        window.addEventListener('resize', () => {
-            const slideWidth = slides[0].offsetWidth + 20;
-            track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
-        });
-        
-        // Inicializar
-        updateCarouselButtons();
     </script>
 </body>
 </html>

@@ -213,19 +213,6 @@
                 <img src="../src/img/logo/logo_fundo_transparente.png" alt="Bastion GYM Logo" class="home-logo">
                 <h1 class="home-title">Bastion <span>GYM</span></h1>
             </div>
-            
-            <button class="hamburger-menu" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            
-            <nav class="home-nav">
-                <a href="Home.html"><i class="fas fa-home"></i> Home</a>
-                <a href="Perfil.html"><i class="fas fa-user"></i> Perfil</a>
-                <a href="Treinos.html"><i class="fas fa-dumbbell"></i> Treinos</a>
-                <a href="Login.html"><i class="fas fa-sign-out-alt"></i> Sair</a>
-            </nav>
         </div>
         
         <div class="edit-profile-container">
@@ -383,13 +370,6 @@
         function closeAIChat() {
             document.querySelector('.ai-sidebar').classList.remove('active');
             document.querySelector('.ai-sidebar-overlay').classList.remove('active');
-        }
-        
-        function toggleMenu() {
-            const nav = document.querySelector('.home-nav');
-            const hamburger = document.querySelector('.hamburger-menu');
-            nav.classList.toggle('active');
-            hamburger.classList.toggle('active');
         }
     </script>
 </body>

@@ -116,7 +116,7 @@
             border-radius: var(--border-radius);
             padding: 20px;
             display: grid;
-            grid-template-columns: auto 1fr 1fr 1fr auto auto;
+            grid-template-columns: auto 1fr 1fr 1fr auto;
             gap: 15px;
             align-items: center;
         }
@@ -218,6 +218,12 @@
             transform: scale(1.1);
         }
         
+        .series-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
         .complete-exercise-btn {
             background: var(--success-color);
             border: none;
@@ -301,17 +307,37 @@
             }
             
             .series-item {
-                grid-template-columns: auto 1fr;
+                grid-template-columns: 1fr;
                 gap: 10px;
             }
             
-            .series-input-group:nth-child(n+4) {
-                grid-column: span 2;
+            .series-number {
+                width: 100%;
+                border-radius: var(--border-radius);
+                margin-bottom: 10px;
+            }
+            
+            .series-input-group {
+                width: 100%;
+            }
+            
+            .series-input-group label {
+                margin-bottom: 5px;
+            }
+            
+            .series-input,
+            .series-select {
+                width: 100%;
+            }
+            
+            .series-buttons {
+                display: flex;
+                gap: 10px;
+                margin-top: 10px;
             }
             
             .add-series-btn, .remove-series-btn {
-                grid-column: span 2;
-                width: 100%;
+                flex: 1;
                 border-radius: var(--border-radius);
             }
             
@@ -330,6 +356,18 @@
                 justify-content: center;
             }
         }
+        
+        @media (max-width: 480px) {
+            .series-item {
+                padding: 15px;
+            }
+            
+            .series-input,
+            .series-select {
+                padding: 8px;
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -339,19 +377,6 @@
                 <img src="../src/img/logo/logo_fundo_transparente.png" alt="Bastion GYM Logo" class="home-logo">
                 <h1 class="home-title">Bastion <span>GYM</span></h1>
             </div>
-            
-            <button class="hamburger-menu" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            
-            <nav class="home-nav">
-                <a href="Home.html"><i class="fas fa-home"></i> Home</a>
-                <a href="Treinos.html"><i class="fas fa-dumbbell"></i> Treinos</a>
-                <a href="Perfil.html"><i class="fas fa-user"></i> Perfil</a>
-                <a href="Login.html"><i class="fas fa-sign-out-alt"></i> Sair</a>
-            </nav>
         </div>
         
         <div class="workout-detail-container">
@@ -401,12 +426,14 @@
                                     <option value="300">5min</option>
                                 </select>
                             </div>
-                            <button class="add-series-btn" onclick="addSeries(this)">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                            <button class="remove-series-btn" onclick="removeSeries(this)" style="display: none;">
-                                <i class="fas fa-minus"></i>
-                            </button>
+                            <div class="series-buttons">
+                                <button class="add-series-btn" onclick="addSeries(this)">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                                <button class="remove-series-btn" onclick="removeSeries(this)" style="display: none;">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -642,12 +669,14 @@
                         <option value="300">5min</option>
                     </select>
                 </div>
-                <button class="add-series-btn" onclick="addSeries(this)">
-                    <i class="fas fa-plus"></i>
-                </button>
-                <button class="remove-series-btn" onclick="removeSeries(this)">
-                    <i class="fas fa-minus"></i>
-                </button>
+                <div class="series-buttons">
+                    <button class="add-series-btn" onclick="addSeries(this)">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <button class="remove-series-btn" onclick="removeSeries(this)">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
             `;
             
             seriesContainer.appendChild(newSeries);
@@ -709,13 +738,6 @@
         function closeAIChat() {
             document.querySelector('.ai-sidebar').classList.remove('active');
             document.querySelector('.ai-sidebar-overlay').classList.remove('active');
-        }
-        
-        function toggleMenu() {
-            const nav = document.querySelector('.home-nav');
-            const hamburger = document.querySelector('.hamburger-menu');
-            nav.classList.toggle('active');
-            hamburger.classList.toggle('active');
         }
     </script>
 </body>
