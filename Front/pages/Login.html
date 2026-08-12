@@ -6,6 +6,8 @@
     <title>Login - Bastion GYM</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../src/css/styles.css">
+    <script src="../src/js/common.js"></script>
+    <script src="../src/js/auth.js"></script>
 </head>
 <body>
     <div class="container">
@@ -72,10 +74,6 @@
                             <i class="fab fa-google"></i>
                             Google
                         </button>
-                        <button class="social-btn">
-                            <i class="fab fa-github"></i>
-                            GitHub
-                        </button>
                     </div>
                     
                     <div class="auth-links">
@@ -86,57 +84,6 @@
             </div>
         </div>
     </div>
-    
-    <script>
-        function togglePassword(inputId) {
-            const input = document.getElementById(inputId);
-            const button = input.nextElementSibling;
-            const icon = button.querySelector('i');
-            
-            if (input.type === 'password') {
-                input.type = 'text';
-                icon.classList.remove('fa-eye');
-                icon.classList.add('fa-eye-slash');
-            } else {
-                input.type = 'password';
-                icon.classList.remove('fa-eye-slash');
-                icon.classList.add('fa-eye');
-            }
-        }
-        
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('email');
-            const password = document.getElementById('password');
-            let isValid = true;
-            
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email.value)) {
-                email.classList.add('error');
-                isValid = false;
-            } else {
-                email.classList.remove('error');
-            }
-            
-            if (password.value.length < 6) {
-                password.classList.add('error');
-                isValid = false;
-            } else {
-                password.classList.remove('error');
-            }
-            
-            if (isValid) {
-                alert('Login realizado com sucesso! (Demo)');
-            }
-        });
-        
-        document.querySelectorAll('input').forEach(input => {
-            input.addEventListener('input', function() {
-                this.classList.remove('error');
-            });
-        });
-    </script>
 </body>
 </html>
     

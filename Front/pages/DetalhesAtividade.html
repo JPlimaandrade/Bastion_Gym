@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Atividade - Bastion GYM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../src/css/styles.css">
+    <link rel="stylesheet" href="../src/css/treino-detalhes.css">
+    <style>
+        .read-only-badge {
+            background: var(--success-color);
+            color: var(--text-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .activity-summary {
+            background: var(--background-card);
+            border: 1px solid rgba(249, 115, 22, 0.2);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .activity-summary h2 {
+            color: var(--text-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .activity-summary h2 i {
+            color: var(--primary-color);
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+        
+        .summary-item {
+            background: var(--secondary-light);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+        
+        .summary-item i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .summary-item h4 {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .summary-item p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+        
+        .exercise-card {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
+        
+        .series-item input,
+        .series-item select {
+            background: var(--background-dark);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            cursor: not-allowed;
+        }
+        
+        .add-series-btn,
+        .remove-series-btn {
+            display: none !important;
+        }
+        
+        .complete-exercise-btn {
+            background: var(--success-color);
+            cursor: default;
+        }
+        
+        .complete-exercise-btn:hover {
+            transform: none;
+            box-shadow: none;
+        }
+        
+        @media (max-width: 768px) {
+            .summary-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="home-container">
+        <div class="workout-detail-container">
+            <div class="workout-detail-header">
+                <div>
+                    <h1>Treino de Peito <span>- Concluído</span></h1>
+                    <span class="read-only-badge"><i class="fas fa-lock"></i> Visualização Apenas</span>
+                </div>
+                <button class="back-btn" onclick="window.location.href='Perfil.html'">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </button>
+            </div>
+            
+            <div class="activity-summary">
+                <h2><i class="fas fa-chart-line"></i> Resumo do Treino</h2>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <i class="fas fa-clock"></i>
+                        <h4>45 min</h4>
+                        <p>Duração</p>
+                    </div>
+                    <div class="summary-item">
+                        <i class="fas fa-dumbbell"></i>
+                        <h4>4</h4>
+                        <p>Exercícios</p>
+                    </div>
+                    <div class="summary-item">
+                        <i class="fas fa-list-ol"></i>
+                        <h4>12</h4>
+                        <p>Séries</p>
+                    </div>
+                    <div class="summary-item">
+                        <i class="fas fa-medal"></i>
+                        <h4>2</h4>
+                        <p>PR</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="exercise-list">
+                <div class="exercise-card">
+                    <div class="exercise-header">
+                        <h3>
+                            <span class="exercise-number">1</span>
+                            Supino Reto
+                        </h3>
+                        <button class="complete-exercise-btn">
+                            <i class="fas fa-check-circle"></i> Concluído
+                        </button>
+                    </div>
+                    
+                    <div class="series-container">
+                        <div class="series-item">
+                            <div class="series-number">1</div>
+                            <div class="series-input-group">
+                                <label>Peso (kg)</label>
+                                <input type="number" class="series-input" value="60" readonly>
+                            </div>
+                            <div class="series-input-group">
+                                <label>Repetições</label>
+                                <input type="number" class="series-input" value="12" readonly>
+                            </div>
+                            <div class="series-input-group">
+                                <label>Descanso</label>
+                                <select class="series-select" disabled>
+                                    <option value="120" selected>2min</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="series-item">
+                            <div class="series-number">2</div>
+                            <div class="series-input-group">
+                                <label>Peso (kg)</label>
+                                <input type="number" class="series-input" value="60" readonly>
+                            </div>
+                            <div class="series-input-group">
+                                <label>Repetições</label>
+                                <input type="number" class="series-input" value="10" readonly>
+                            </div>
+                            <div class="series-input-group">
+                                <label>Descanso</label>
+                                <select class="series-select" disabled>
+                                    <option value="120" selected>2min</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="series-item">
+                            <div class="series-number">3</div>
+                            <div class="series-input-group">
+                                <label>Peso (kg)</label>
+                                <input type="number" class="series-input" value="55" readonly>
+                            </div>
+                            <div class="series-input-group">
+                                <label>Repetições</label>
+                                <input type="number" class="series-input" value="10" readonly>
+                            </div>
+                            <div class="series-input-group">
+                                <label>Descanso</label>
+                                <select class="series-select" disabled>
+                                    <option value="120" selected>2min</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-card">
+                    <div class="exercise-header">
+                        <h3>
+                            <span class="exercise-number">2</span>
+                            Crucifixo
+                        </h3>
+                        <button class="complete-exercise-btn">
+                            <i class="fas fa-check-circle"></i> Concluído
+                        </button>
+                    </div>
+                    
+                    <div class="series-container">
+                        <div class="series-item">
+                            <div class="series-number">1</div>
+                            <div class="series-input-group">
+                                <label>Peso (kg)</label>
+                                <input type="number" class="series-input" value="20" readonly>
+                            </div>
+                            <div class="series-input-group">
+                                <label>Repetições</label>
+                                <input type="number" class="series-input" value="15" readonly>
+                            </div>
+                            <div class="series-input-group">
+                                <label>Descanso</label>
+                                <select class="series-select" disabled>
+                                    <option value="90" selected>1min 30s</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="series-item">
+                            <div class="series-number">2</div>
+                            <div class="series-input-group">
+                                <label>Peso (kg)</label>
+                                <input type="number" class="series-input" value="20" readonly>
+                            </div>
+                            <div class="series-input-group">
+                                <label>Repetições</label>
+                                <input type="number" class="series-input" value="12" readonly>
+                            </div>
+                            <div class="series-input-group">
+                                <label>Descanso</label>
+                                <select class="series-select" disabled>
+                                    <option value="90" selected>1min 30s</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="series-item">
+                            <div class="series-number">3</div>
+                            <div class="series-input-group">
+                                <label>Peso (kg)</label>
+                                <input type="number" class="series-input" value="18" readonly>
+                            </div>
+                            <div class="series-input-group">
+                                <label>Repetições</label>
+                                <input type="number" class="series-input" value="12" readonly>
+                            </div>
+                            <div class="series-input-group">
+                                <label>Descanso</label>
+                                <select class="series-select" disabled>
+                                    <option value="90" selected>1min 30s</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-card">
+                    <div class="exercise-header">
+                        <h3>
+                            <span class="exercise-number">3</span>
+                            Flexão de Braço
+                        </h3>
+                        <button class="complete-exercise-btn">
+                            <i class="fas fa-check-circle"></i> Concluído
+                        </button>
+                    </div>
+                    
+                    <div class="series-container">
+                        <div class="series-item">
+                            <div class="series-number">1</div>
+                            <div class="series-input-group">
+                                <label>Peso (kg)</label>
+                                <input type="number" class="series-input" value="0" readonly>
+                            </div>
+                            <div class="series-input-group">
+                                <label>Repetições</label>
+                                <input type="number" class="series-input" value="20" readonly>
+                            </div>
+                            <div class="series-input-group">
+                                <label>Descanso</label>
+                                <select class="series-select" disabled>
+                                    <option value="60" selected>1min</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="series-item">
+                            <div class="series-number">2</div>
+                            <div class="series-input-group">
+                                <label>Peso (kg)</label>
+                                <input type="number" class="series-input" value="0" readonly>
+                            </div>
+                            <div class="series-input-group">
+                                <label>Repetições</label>
+                                <input type="number" class="series-input" value="15" readonly>
+                            </div>
+                            <div class="series-input-group">
+                                <label>Descanso</label>
+                                <select class="series-select" disabled>
+                                    <option value="60" selected>1min</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="series-item">
+                            <div class="series-number">3</div>
+                            <div class="series-input-group">
+                                <label>Peso (kg)</label>
+                                <input type="number" class="series-input" value="0" readonly>
+                            </div>
+                            <div class="series-input-group">
+                                <label>Repetições</label>
+                                <input type="number" class="series-input" value="12" readonly>
+                            </div>
+                            <div class="series-input-group">
+                                <label>Descanso</label>
+                                <select class="series-select" disabled>
+                                    <option value="60" selected>1min</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise-card">
+                    <div class="exercise-header">
+                        <h3>
+                            <span class="exercise-number">4</span>
+                            Tríceps Pulley
+                        </h3>
+                        <button class="complete-exercise-btn">
+                            <i class="fas fa-check-circle"></i> Concluído
+                        </button>
+                    </div>
+                    
+                    <div class="series-container">
+                        <div class="series-item">
+                            <div class="series-number">1</div>
+                            <div class="series-input-group">
+                                <label>Peso (kg)</label>
+                                <input type="number" class="series-input" value="25" readonly>
+                            </div>
+                            <div class="series-input-group">
+                                <label>Repetições</label>
+                                <input type="number" class="series-input" value="15" readonly>
+                            </div>
+                            <div class="series-input-group">
+                                <label>Descanso</label>
+                                <select class="series-select" disabled>
+                                    <option value="90" selected>1min 30s</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="series-item">
+                            <div class="series-number">2</div>
+                            <div class="series-input-group">
+                                <label>Peso (kg)</label>
+                                <input type="number" class="series-input" value="25" readonly>
+                            </div>
+                            <div class="series-input-group">
+                                <label>Repetições</label>
+                                <input type="number" class="series-input" value="12" readonly>
+                            </div>
+                            <div class="series-input-group">
+                                <label>Descanso</label>
+                                <select class="series-select" disabled>
+                                    <option value="90" selected>1min 30s</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="series-item">
+                            <div class="series-number">3</div>
+                            <div class="series-input-group">
+                                <label>Peso (kg)</label>
+                                <input type="number" class="series-input" value="22" readonly>
+                            </div>
+                            <div class="series-input-group">
+                                <label>Repetições</label>
+                                <input type="number" class="series-input" value="12" readonly>
+                            </div>
+                            <div class="series-input-group">
+                                <label>Descanso</label>
+                                <select class="series-select" disabled>
+                                    <option value="90" selected>1min 30s</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="home-footer">
+            <img src="../src/img/logo/logo_fundo_transparente.png" alt="Bastion GYM Logo" class="footer-logo">
+            <p>&copy; 2024 Bastion GYM. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>

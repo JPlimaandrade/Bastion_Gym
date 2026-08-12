@@ -1,0 +1,368 @@
+/**
+ * Estilos de Detalhes do Treino - Bastion GYM
+ * Arquivo: treino-detalhes.css
+ * Descrição: Estilos específicos da página de execução de treino
+ */
+
+.workout-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.workout-detail-header {
+    background: linear-gradient(135deg, var(--background-card) 0%, var(--secondary-light) 100%);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(249, 115, 22, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.workout-detail-header h1 {
+    color: var(--text-color);
+    font-size: 2rem;
+}
+
+.workout-detail-header h1 span {
+    color: var(--primary-color);
+}
+
+.back-btn {
+    background: var(--secondary-light);
+    border: 1px solid rgba(249, 115, 22, 0.3);
+    color: var(--text-color);
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.back-btn:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.exercise-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.exercise-card {
+    background: var(--background-card);
+    border: 1px solid rgba(249, 115, 22, 0.2);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    transition: var(--transition);
+}
+
+.exercise-card:hover {
+    border-color: var(--primary-color);
+}
+
+.exercise-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.exercise-header h3 {
+    color: var(--text-color);
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.exercise-header h3 i {
+    color: var(--primary-color);
+}
+
+.exercise-number {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: var(--text-color);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.series-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.series-item {
+    background: var(--secondary-light);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    display: grid;
+    grid-template-columns: auto 1fr 1fr 1fr auto;
+    gap: 15px;
+    align-items: center;
+}
+
+.series-number {
+    background: var(--primary-color);
+    color: var(--text-color);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.series-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.series-input-group label {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.series-input {
+    background: var(--background-card);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    outline: none;
+    transition: var(--transition);
+}
+
+.series-input:focus {
+    border-color: var(--primary-color);
+}
+
+.series-select {
+    background: var(--background-card);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    outline: none;
+    cursor: pointer;
+}
+
+.series-select:focus {
+    border-color: var(--primary-color);
+}
+
+.series-select option {
+    background: var(--secondary-light);
+    color: var(--text-color);
+}
+
+.add-series-btn {
+    background: var(--primary-color);
+    border: none;
+    color: var(--text-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-series-btn:hover {
+    background: var(--primary-dark);
+    transform: scale(1.1);
+}
+
+.remove-series-btn {
+    background: var(--error-color);
+    border: none;
+    color: var(--text-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.remove-series-btn:hover {
+    background: #c82333;
+    transform: scale(1.1);
+}
+
+.series-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.complete-exercise-btn {
+    background: var(--success-color);
+    border: none;
+    color: var(--text-color);
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.complete-exercise-btn:hover {
+    background: #218838;
+    transform: translateY(-2px);
+}
+
+.add-exercise-btn {
+    background: var(--secondary-light);
+    border: 2px dashed rgba(249, 115, 22, 0.3);
+    color: var(--text-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.1rem;
+}
+
+.add-exercise-btn:hover {
+    border-color: var(--primary-color);
+    background: rgba(249, 115, 22, 0.1);
+}
+
+.workout-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(249, 115, 22, 0.2);
+}
+
+.finish-workout-btn {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    border: none;
+    color: var(--text-color);
+    padding: 15px 30px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.finish-workout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .workout-detail-container {
+        padding: 20px;
+    }
+    
+    .workout-detail-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .workout-detail-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .series-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .series-number {
+        width: 100%;
+        border-radius: var(--border-radius);
+        margin-bottom: 10px;
+    }
+    
+    .series-input-group {
+        width: 100%;
+    }
+    
+    .series-input-group label {
+        margin-bottom: 5px;
+    }
+    
+    .series-input,
+    .series-select {
+        width: 100%;
+    }
+    
+    .series-buttons {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    
+    .add-series-btn, .remove-series-btn {
+        flex: 1;
+        border-radius: var(--border-radius);
+    }
+    
+    .exercise-header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .workout-actions {
+        flex-direction: column;
+    }
+    
+    .finish-workout-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .series-item {
+        padding: 15px;
+    }
+    
+    .series-input,
+    .series-select {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+}

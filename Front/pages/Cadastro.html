@@ -6,6 +6,8 @@
     <title>Cadastro - Bastion GYM</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../src/css/styles.css">
+    <script src="../src/js/common.js"></script>
+    <script src="../src/js/auth.js"></script>
 </head>
 <body>
     <div class="container">
@@ -97,11 +99,18 @@
                         <button type="submit" class="btn-primary">
                             <i class="fas fa-user-plus"></i> Criar conta
                         </button>
-                        
-                        <button type="button" class="btn-secondary" onclick="window.location.href='Login.html'">
-                            <i class="fas fa-arrow-left"></i> Voltar ao login
-                        </button>
                     </form>
+                    
+                    <div class="divider">
+                        <span>ou cadastre-se com</span>
+                    </div>
+                    
+                    <div class="social-login">
+                        <button class="social-btn">
+                            <i class="fab fa-google"></i>
+                            Google
+                        </button>
+                    </div>
                     
                     <div class="auth-links">
                         <p>Já tem uma conta? <a href="Login.html">Faça login</a></p>
@@ -111,104 +120,5 @@
             </div>
         </div>
     </div>
-    
-    <script>
-        function togglePassword(inputId) {
-            const input = document.getElementById(inputId);
-            const button = input.nextElementSibling;
-            const icon = button.querySelector('i');
-            
-            if (input.type === 'password') {
-                input.type = 'text';
-                icon.classList.remove('fa-eye');
-                icon.classList.add('fa-eye-slash');
-            } else {
-                input.type = 'password';
-                icon.classList.remove('fa-eye-slash');
-                icon.classList.add('fa-eye');
-            }
-        }
-        
-        document.getElementById('cadastroForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const nome = document.getElementById('nome');
-            const email = document.getElementById('email');
-            const password = document.getElementById('password');
-            const confirmPassword = document.getElementById('confirmPassword');
-            const telefone = document.getElementById('telefone');
-            let isValid = true;
-            
-            if (nome.value.trim().length < 3) {
-                nome.classList.add('error');
-                isValid = false;
-            } else {
-                nome.classList.remove('error');
-            }
-            
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email.value)) {
-                email.classList.add('error');
-                isValid = false;
-            } else {
-                email.classList.remove('error');
-            }
-            
-            if (password.value.length < 6) {
-                password.classList.add('error');
-                isValid = false;
-            } else {
-                password.classList.remove('error');
-            }
-            
-            if (password.value !== confirmPassword.value) {
-                confirmPassword.classList.add('error');
-                isValid = false;
-            } else {
-                confirmPassword.classList.remove('error');
-            }
-            
-            if (telefone.value.trim() !== '') {
-                const phoneRegex = /^\(\d{2}\)\s\d{4,5}-\d{4}$/;
-                if (!phoneRegex.test(telefone.value)) {
-                    telefone.classList.add('error');
-                    isValid = false;
-                } else {
-                    telefone.classList.remove('error');
-                }
-            }
-            
-            if (isValid) {
-                alert('Cadastro realizado com sucesso! (Demo)');
-            }
-        });
-        
-        document.querySelectorAll('input').forEach(input => {
-            input.addEventListener('input', function() {
-                this.classList.remove('error');
-            });
-        });
-        
-        const telefoneInput = document.getElementById('telefone');
-        telefoneInput.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            
-            if (value.length > 11) {
-                value = value.slice(0, 11);
-            }
-            
-            if (value.length > 0) {
-                value = '(' + value;
-                if (value.length > 3) {
-                    value = value.slice(0, 3) + ') ' + value.slice(3);
-                }
-                if (value.length > 10) {
-                    value = value.slice(0, 10) + '-' + value.slice(10);
-                }
-            }
-            
-            e.target.value = value;
-        });
-    </script>
 </body>
 </html>

@@ -6,332 +6,11 @@
     <title>Perfil - Bastion GYM</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../src/css/styles.css">
-    <style>
-        .profile-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px;
-            width: 100%;
-            overflow-x: hidden;
-        }
-        
-        .profile-header {
-            background: linear-gradient(135deg, var(--background-card) 0%, var(--secondary-light) 100%);
-            border-radius: var(--border-radius);
-            padding: 40px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(249, 115, 22, 0.2);
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            position: relative;
-        }
-        
-        .profile-layout {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 30px;
-        }
-        
-        .profile-left {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-        
-        .profile-right {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .profile-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-        
-        .stat-card {
-            background: var(--background-card);
-            border: 1px solid rgba(249, 115, 22, 0.2);
-            border-radius: var(--border-radius);
-            padding: 25px;
-            text-align: center;
-            transition: var(--transition);
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-color);
-        }
-        
-        .stat-card i {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-        
-        .stat-card h3 {
-            font-size: 2rem;
-            color: var(--text-color);
-            margin-bottom: 5px;
-        }
-        
-        .stat-card p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .profile-section {
-            background: var(--background-card);
-            border: 1px solid rgba(249, 115, 22, 0.2);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-        
-        .profile-section h2 {
-            font-size: 1.5rem;
-            color: var(--text-color);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .profile-section h2 i {
-            color: var(--primary-color);
-        }
-        
-        .recent-activities {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .activity-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px;
-            background: var(--secondary-light);
-            border-radius: var(--border-radius);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: var(--transition);
-        }
-        
-        .activity-item:hover {
-            border-color: var(--primary-color);
-        }
-        
-        .activity-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-color);
-        }
-        
-        .activity-details h4 {
-            color: var(--text-color);
-            margin-bottom: 5px;
-        }
-        
-        .activity-details p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-        
-        .activity-date {
-            margin-left: auto;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-        
-        .edit-btn {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-            color: var(--text-color);
-            border: none;
-            padding: 12px 24px;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            white-space: nowrap;
-        }
-        
-        .edit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
-        }
-        
-        .profile-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--text-color);
-            border: 4px solid rgba(249, 115, 22, 0.3);
-        }
-        
-        .profile-info h1 {
-            font-size: 2rem;
-            color: var(--text-color);
-            margin-bottom: 10px;
-        }
-        
-        .profile-info p {
-            color: var(--text-muted);
-            margin-bottom: 5px;
-        }
-        
-
-        
-        .personal-info {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .info-item {
-            background: var(--secondary-light);
-            padding: 20px;
-            border-radius: var(--border-radius);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .info-item label {
-            display: block;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .info-item span {
-            color: var(--text-color);
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-        
-        .recent-activities {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .activity-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px;
-            background: var(--secondary-light);
-            border-radius: var(--border-radius);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: var(--transition);
-        }
-        
-        .activity-item:hover {
-            border-color: var(--primary-color);
-        }
-        
-        .activity-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-color);
-        }
-        
-        .activity-details h4 {
-            color: var(--text-color);
-            margin-bottom: 5px;
-        }
-        
-        .activity-details p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-        
-        .activity-date {
-            margin-left: auto;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-        
-        .edit-btn {
-            background: var(--primary-color);
-            color: var(--text-color);
-            border: none;
-            padding: 10px 20px;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .edit-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-        
-        @media (max-width: 768px) {
-            .profile-header {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .profile-info p {
-                justify-content: center;
-            }
-            
-            .profile-layout {
-                grid-template-columns: 1fr;
-            }
-            
-            .profile-stats {
-                grid-template-columns: 1fr;
-            }
-            
-            .activity-item {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .activity-date {
-                margin-left: 0;
-                margin-top: 10px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../src/css/perfil.css">
+    <script src="../src/js/common.js"></script>
 </head>
 <body>
     <div class="home-container">
-        <div class="home-header">
-            <div style="display: flex; align-items: center; gap: 15px;">
-                <img src="../src/img/logo/logo_fundo_transparente.png" alt="Bastion GYM Logo" class="home-logo">
-                <h1 class="home-title">Bastion <span>GYM</span></h1>
-            </div>
-        </div>
-        
         <div class="profile-container">
             <div class="profile-header">
                 <div class="profile-avatar">
@@ -342,11 +21,23 @@
                     <p><i class="fas fa-envelope"></i> joao.silva@email.com</p>
                     <p><i class="fas fa-phone"></i> (11) 98765-4321</p>
                     <p><i class="fas fa-calendar"></i> Membro desde Janeiro 2024</p>
+                    <div class="profile-stats-mobile">
+                        <div class="stat-item-mobile">
+                            <i class="fas fa-clock"></i>
+                            <span>48h</span>
+                            <small>Tempo de Treino</small>
+                        </div>
+                        <div class="stat-item-mobile">
+                            <i class="fas fa-dumbbell"></i>
+                            <span>32</span>
+                            <small>Treinos Completados</small>
+                        </div>
+                    </div>
                     <button class="edit-btn" onclick="window.location.href='EditarPerfil.html'">
                         <i class="fas fa-edit"></i> Editar Perfil
                     </button>
                 </div>
-                <button class="edit-btn" onclick="window.location.href='Login.html'" style="background: linear-gradient(135deg, var(--error-color) 0%, #c82333 100%); position: absolute; top: 20px; right: 20px;">
+                <button class="edit-btn logout-btn" onclick="window.location.href='Login.html'" style="background: linear-gradient(135deg, var(--error-color) 0%, #c82333 100%); position: absolute; top: 20px; right: 20px;">
                     <i class="fas fa-sign-out-alt"></i> Sair
                 </button>
             </div>
@@ -371,7 +62,7 @@
                     <div class="profile-section">
                         <h2><i class="fas fa-history"></i> Atividades Recentes</h2>
                         <div class="recent-activities">
-                            <div class="activity-item">
+                            <div class="activity-item" onclick="window.location.href='DetalhesAtividade.html'">
                                 <div class="activity-icon">
                                     <i class="fas fa-dumbbell"></i>
                                 </div>
@@ -382,7 +73,7 @@
                                 <div class="activity-date">Hoje</div>
                             </div>
                             
-                            <div class="activity-item">
+                            <div class="activity-item" onclick="window.location.href='DetalhesAtividade.html'">
                                 <div class="activity-icon">
                                     <i class="fas fa-running"></i>
                                 </div>
@@ -393,7 +84,7 @@
                                 <div class="activity-date">Ontem</div>
                             </div>
                             
-                            <div class="activity-item">
+                            <div class="activity-item" onclick="window.location.href='DetalhesAtividade.html'">
                                 <div class="activity-icon">
                                     <i class="fas fa-dumbbell"></i>
                                 </div>
@@ -409,7 +100,7 @@
             </div>
         </div>
         
-        <footer class="home-footer">
+        <footer class="home-footer footer-with-nav">
             <img src="../src/img/logo/logo_fundo_transparente.png" alt="Bastion GYM Logo" class="footer-logo">
             <p>&copy; 2024 Bastion GYM. Todos os direitos reservados.</p>
         </footer>
@@ -462,21 +153,5 @@
             </div>
         </div>
     </div>
-    
-    <script>
-        function openAIChat() {
-            if (window.innerWidth <= 768) {
-                window.location.href = 'IAChatMobile.html';
-            } else {
-                document.querySelector('.ai-sidebar').classList.add('active');
-                document.querySelector('.ai-sidebar-overlay').classList.add('active');
-            }
-        }
-        
-        function closeAIChat() {
-            document.querySelector('.ai-sidebar').classList.remove('active');
-            document.querySelector('.ai-sidebar-overlay').classList.remove('active');
-        }
-    </script>
 </body>
 </html>

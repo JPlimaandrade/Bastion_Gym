@@ -6,379 +6,12 @@
     <title>Treino - Bastion GYM</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../src/css/styles.css">
-    <style>
-        .workout-detail-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px;
-            width: 100%;
-            overflow-x: hidden;
-        }
-        
-        .workout-detail-header {
-            background: linear-gradient(135deg, var(--background-card) 0%, var(--secondary-light) 100%);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(249, 115, 22, 0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .workout-detail-header h1 {
-            color: var(--text-color);
-            font-size: 2rem;
-        }
-        
-        .workout-detail-header h1 span {
-            color: var(--primary-color);
-        }
-        
-        .back-btn {
-            background: var(--secondary-light);
-            border: 1px solid rgba(249, 115, 22, 0.3);
-            color: var(--text-color);
-            padding: 12px 24px;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .back-btn:hover {
-            background: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-        
-        .exercise-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        
-        .exercise-card {
-            background: var(--background-card);
-            border: 1px solid rgba(249, 115, 22, 0.2);
-            border-radius: var(--border-radius);
-            padding: 25px;
-            transition: var(--transition);
-        }
-        
-        .exercise-card:hover {
-            border-color: var(--primary-color);
-        }
-        
-        .exercise-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .exercise-header h3 {
-            color: var(--text-color);
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .exercise-header h3 i {
-            color: var(--primary-color);
-        }
-        
-        .exercise-number {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-            color: var(--text-color);
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-        }
-        
-        .series-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .series-item {
-            background: var(--secondary-light);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--border-radius);
-            padding: 20px;
-            display: grid;
-            grid-template-columns: auto 1fr 1fr 1fr auto;
-            gap: 15px;
-            align-items: center;
-        }
-        
-        .series-number {
-            background: var(--primary-color);
-            color: var(--text-color);
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-        }
-        
-        .series-input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-        
-        .series-input-group label {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-        }
-        
-        .series-input {
-            background: var(--background-card);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 10px;
-            color: var(--text-color);
-            font-size: 0.95rem;
-            outline: none;
-            transition: var(--transition);
-        }
-        
-        .series-input:focus {
-            border-color: var(--primary-color);
-        }
-        
-        .series-select {
-            background: var(--background-card);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 10px;
-            color: var(--text-color);
-            font-size: 0.95rem;
-            outline: none;
-            cursor: pointer;
-        }
-        
-        .series-select:focus {
-            border-color: var(--primary-color);
-        }
-        
-        .series-select option {
-            background: var(--secondary-light);
-            color: var(--text-color);
-        }
-        
-        .add-series-btn {
-            background: var(--primary-color);
-            border: none;
-            color: var(--text-color);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .add-series-btn:hover {
-            background: var(--primary-dark);
-            transform: scale(1.1);
-        }
-        
-        .remove-series-btn {
-            background: var(--error-color);
-            border: none;
-            color: var(--text-color);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .remove-series-btn:hover {
-            background: #c82333;
-            transform: scale(1.1);
-        }
-        
-        .series-buttons {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        
-        .complete-exercise-btn {
-            background: var(--success-color);
-            border: none;
-            color: var(--text-color);
-            padding: 10px 20px;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-        }
-        
-        .complete-exercise-btn:hover {
-            background: #218838;
-            transform: translateY(-2px);
-        }
-        
-        .add-exercise-btn {
-            background: var(--secondary-light);
-            border: 2px dashed rgba(249, 115, 22, 0.3);
-            color: var(--text-color);
-            padding: 20px;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-size: 1.1rem;
-        }
-        
-        .add-exercise-btn:hover {
-            border-color: var(--primary-color);
-            background: rgba(249, 115, 22, 0.1);
-        }
-        
-        .workout-actions {
-            display: flex;
-            gap: 15px;
-            justify-content: flex-end;
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(249, 115, 22, 0.2);
-        }
-        
-        .finish-workout-btn {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-            border: none;
-            color: var(--text-color);
-            padding: 15px 30px;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .finish-workout-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
-        }
-        
-        @media (max-width: 768px) {
-            .workout-detail-container {
-                padding: 20px;
-            }
-            
-            .workout-detail-header {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-            
-            .workout-detail-header h1 {
-                font-size: 1.5rem;
-            }
-            
-            .series-item {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-            
-            .series-number {
-                width: 100%;
-                border-radius: var(--border-radius);
-                margin-bottom: 10px;
-            }
-            
-            .series-input-group {
-                width: 100%;
-            }
-            
-            .series-input-group label {
-                margin-bottom: 5px;
-            }
-            
-            .series-input,
-            .series-select {
-                width: 100%;
-            }
-            
-            .series-buttons {
-                display: flex;
-                gap: 10px;
-                margin-top: 10px;
-            }
-            
-            .add-series-btn, .remove-series-btn {
-                flex: 1;
-                border-radius: var(--border-radius);
-            }
-            
-            .exercise-header {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
-            
-            .workout-actions {
-                flex-direction: column;
-            }
-            
-            .finish-workout-btn {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .series-item {
-                padding: 15px;
-            }
-            
-            .series-input,
-            .series-select {
-                padding: 8px;
-                font-size: 0.9rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../src/css/treino-detalhes.css">
+    <script src="../src/js/common.js"></script>
+    <script src="../src/js/treino-detalhes.js"></script>
 </head>
 <body>
     <div class="home-container">
-        <div class="home-header">
-            <div style="display: flex; align-items: center; gap: 15px;">
-                <img src="../src/img/logo/logo_fundo_transparente.png" alt="Bastion GYM Logo" class="home-logo">
-                <h1 class="home-title">Bastion <span>GYM</span></h1>
-            </div>
-        </div>
-        
         <div class="workout-detail-container">
             <div class="workout-detail-header">
                 <h1>Força Completa <span>- Treino do Dia</span></h1>
@@ -476,12 +109,14 @@
                                     <option value="300">5min</option>
                                 </select>
                             </div>
-                            <button class="add-series-btn" onclick="addSeries(this)">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                            <button class="remove-series-btn" onclick="removeSeries(this)" style="display: none;">
-                                <i class="fas fa-minus"></i>
-                            </button>
+                            <div class="series-buttons">
+                                <button class="add-series-btn" onclick="addSeries(this)">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                                <button class="remove-series-btn" onclick="removeSeries(this)" style="display: none;">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -524,12 +159,14 @@
                                     <option value="300">5min</option>
                                 </select>
                             </div>
-                            <button class="add-series-btn" onclick="addSeries(this)">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                            <button class="remove-series-btn" onclick="removeSeries(this)" style="display: none;">
-                                <i class="fas fa-minus"></i>
-                            </button>
+                            <div class="series-buttons">
+                                <button class="add-series-btn" onclick="addSeries(this)">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                                <button class="remove-series-btn" onclick="removeSeries(this)" style="display: none;">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -554,7 +191,7 @@
                             </div>
                             <div class="series-input-group">
                                 <label>Repetições</label>
-                                <input type="number" class="series-input" placeholder="0" value="10">
+                                <input type="number" class="series-input" placeholder="0" value="12">
                             </div>
                             <div class="series-input-group">
                                 <label>Descanso</label>
@@ -572,24 +209,26 @@
                                     <option value="300">5min</option>
                                 </select>
                             </div>
-                            <button class="add-series-btn" onclick="addSeries(this)">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                            <button class="remove-series-btn" onclick="removeSeries(this)" style="display: none;">
-                                <i class="fas fa-minus"></i>
-                            </button>
+                            <div class="series-buttons">
+                                <button class="add-series-btn" onclick="addSeries(this)">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                                <button class="remove-series-btn" onclick="removeSeries(this)" style="display: none;">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <button class="add-exercise-btn">
+                <button class="add-exercise-btn" onclick="addExercise()">
                     <i class="fas fa-plus"></i>
                     Adicionar Exercício
                 </button>
             </div>
             
             <div class="workout-actions">
-                <button class="finish-workout-btn">
+                <button class="finish-workout-btn" onclick="finishWorkout()">
                     <i class="fas fa-flag-checkered"></i>
                     Finalizar Treino
                 </button>
@@ -600,145 +239,6 @@
             <img src="../src/img/logo/logo_fundo_transparente.png" alt="Bastion GYM Logo" class="footer-logo">
             <p>&copy; 2024 Bastion GYM. Todos os direitos reservados.</p>
         </footer>
-        
-        <button class="ai-float-btn" onclick="openAIChat()">
-            <i class="fas fa-robot"></i>
-        </button>
-        
-        <div class="ai-sidebar-overlay" onclick="closeAIChat()"></div>
-        
-        <div class="ai-sidebar">
-            <div class="ai-sidebar-header">
-                <h3><i class="fas fa-robot"></i> IA Fitness</h3>
-                <button class="ai-close-btn" onclick="closeAIChat()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            
-            <div class="ai-sidebar-content">
-                <div class="ai-sidebar-message ai">
-                    <div class="ai-sidebar-message-avatar">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="ai-sidebar-message-content">
-                        <p>Olá! Sou sua IA Fitness do Bastion GYM. Como posso ajudar você hoje?</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="ai-sidebar-input-area">
-                <input type="text" class="ai-sidebar-input" placeholder="Digite sua mensagem...">
-                <button class="ai-sidebar-send-btn">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
-            </div>
-        </div>
     </div>
-    
-    <script>
-        function addSeries(button) {
-            const seriesContainer = button.closest('.series-container');
-            const currentSeries = seriesContainer.querySelectorAll('.series-item').length;
-            const newSeriesNumber = currentSeries + 1;
-            
-            const newSeries = document.createElement('div');
-            newSeries.className = 'series-item';
-            newSeries.innerHTML = `
-                <div class="series-number">${newSeriesNumber}</div>
-                <div class="series-input-group">
-                    <label>Peso (kg)</label>
-                    <input type="number" class="series-input" placeholder="0">
-                </div>
-                <div class="series-input-group">
-                    <label>Repetições</label>
-                    <input type="number" class="series-input" placeholder="0">
-                </div>
-                <div class="series-input-group">
-                    <label>Descanso</label>
-                    <select class="series-select">
-                        <option value="0">0s</option>
-                        <option value="30">30s</option>
-                        <option value="60">1min</option>
-                        <option value="90">1min 30s</option>
-                        <option value="120">2min</option>
-                        <option value="150">2min 30s</option>
-                        <option value="180">3min</option>
-                        <option value="210">3min 30s</option>
-                        <option value="240">4min</option>
-                        <option value="270">4min 30s</option>
-                        <option value="300">5min</option>
-                    </select>
-                </div>
-                <div class="series-buttons">
-                    <button class="add-series-btn" onclick="addSeries(this)">
-                        <i class="fas fa-plus"></i>
-                    </button>
-                    <button class="remove-series-btn" onclick="removeSeries(this)">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                </div>
-            `;
-            
-            seriesContainer.appendChild(newSeries);
-            updateSeriesButtons(seriesContainer);
-            updateSeriesNumbers(seriesContainer);
-        }
-        
-        function removeSeries(button) {
-            const seriesContainer = button.closest('.series-container');
-            const seriesItem = button.closest('.series-item');
-            const seriesItems = seriesContainer.querySelectorAll('.series-item');
-            
-            if (seriesItems.length > 1) {
-                seriesItem.remove();
-                updateSeriesButtons(seriesContainer);
-                updateSeriesNumbers(seriesContainer);
-            }
-        }
-        
-        function updateSeriesButtons(container) {
-            const seriesItems = container.querySelectorAll('.series-item');
-            seriesItems.forEach(item => {
-                const addBtn = item.querySelector('.add-series-btn');
-                const removeBtn = item.querySelector('.remove-series-btn');
-                
-                if (seriesItems.length > 1) {
-                    removeBtn.style.display = 'flex';
-                } else {
-                    removeBtn.style.display = 'none';
-                }
-            });
-        }
-        
-        function updateSeriesNumbers(container) {
-            const seriesItems = container.querySelectorAll('.series-item');
-            seriesItems.forEach((item, index) => {
-                const numberElement = item.querySelector('.series-number');
-                numberElement.textContent = index + 1;
-            });
-        }
-        
-        function completeExercise(button) {
-            const exerciseCard = button.closest('.exercise-card');
-            exerciseCard.style.opacity = '0.5';
-            exerciseCard.style.pointerEvents = 'none';
-            button.innerHTML = '<i class="fas fa-check-circle"></i> Concluído';
-            button.style.background = 'var(--success-color)';
-        }
-        
-        function openAIChat() {
-            if (window.innerWidth <= 768) {
-                window.location.href = 'IAChatMobile.html';
-            } else {
-                document.querySelector('.ai-sidebar').classList.add('active');
-                document.querySelector('.ai-sidebar-overlay').classList.add('active');
-            }
-        }
-        
-        function closeAIChat() {
-            document.querySelector('.ai-sidebar').classList.remove('active');
-            document.querySelector('.ai-sidebar-overlay').classList.remove('active');
-        }
-    </script>
 </body>
 </html>
