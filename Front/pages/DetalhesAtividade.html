@@ -8,15 +8,6 @@
     <link rel="stylesheet" href="../src/css/styles.css">
     <link rel="stylesheet" href="../src/css/treino-detalhes.css">
     <style>
-        .read-only-badge {
-            background: var(--success-color);
-            color: var(--text-color);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-        
         .activity-summary {
             background: var(--background-card);
             border: 1px solid rgba(249, 115, 22, 0.2);
@@ -81,19 +72,15 @@
             cursor: not-allowed;
         }
         
+        .series-item input:focus,
+        .series-item select:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+        
         .add-series-btn,
         .remove-series-btn {
             display: none !important;
-        }
-        
-        .complete-exercise-btn {
-            background: var(--success-color);
-            cursor: default;
-        }
-        
-        .complete-exercise-btn:hover {
-            transform: none;
-            box-shadow: none;
         }
         
         @media (max-width: 768px) {
@@ -109,7 +96,6 @@
             <div class="workout-detail-header">
                 <div>
                     <h1>Treino de Peito <span>- Concluído</span></h1>
-                    <span class="read-only-badge"><i class="fas fa-lock"></i> Visualização Apenas</span>
                 </div>
                 <button class="back-btn" onclick="window.location.href='Perfil.html'">
                     <i class="fas fa-arrow-left"></i> Voltar
@@ -149,9 +135,6 @@
                             <span class="exercise-number">1</span>
                             Supino Reto
                         </h3>
-                        <button class="complete-exercise-btn">
-                            <i class="fas fa-check-circle"></i> Concluído
-                        </button>
                     </div>
                     
                     <div class="series-container">
@@ -215,9 +198,6 @@
                             <span class="exercise-number">2</span>
                             Crucifixo
                         </h3>
-                        <button class="complete-exercise-btn">
-                            <i class="fas fa-check-circle"></i> Concluído
-                        </button>
                     </div>
                     
                     <div class="series-container">
@@ -281,9 +261,6 @@
                             <span class="exercise-number">3</span>
                             Flexão de Braço
                         </h3>
-                        <button class="complete-exercise-btn">
-                            <i class="fas fa-check-circle"></i> Concluído
-                        </button>
                     </div>
                     
                     <div class="series-container">
@@ -347,9 +324,6 @@
                             <span class="exercise-number">4</span>
                             Tríceps Pulley
                         </h3>
-                        <button class="complete-exercise-btn">
-                            <i class="fas fa-check-circle"></i> Concluído
-                        </button>
                     </div>
                     
                     <div class="series-container">

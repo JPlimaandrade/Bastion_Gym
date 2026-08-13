@@ -144,36 +144,6 @@ function completeExercise(button) {
 }
 
 /**
- * Adiciona um novo exercício ao treino
- */
-function addExercise() {
-    const exercisesContainer = document.querySelector('.exercises-container');
-    const currentExercises = exercisesContainer.querySelectorAll('.exercise-card').length;
-    const newExerciseNumber = currentExercises + 1;
-    
-    const newExercise = document.createElement('div');
-    newExercise.className = 'exercise-card';
-    newExercise.innerHTML = `
-        <div class="exercise-header">
-            <h3>Exercício ${newExerciseNumber}</h3>
-            <button class="complete-exercise-btn" onclick="completeExercise(this)">
-                <i class="fas fa-check"></i> Concluir
-            </button>
-        </div>
-        <div class="series-container">
-            <div class="series-list">
-                <!-- Séries serão adicionadas aqui -->
-            </div>
-            <button class="add-series-btn" onclick="addSeries(this)">
-                <i class="fas fa-plus"></i> Adicionar Série
-            </button>
-        </div>
-    `;
-    
-    exercisesContainer.appendChild(newExercise);
-}
-
-/**
  * Finaliza o treino
  */
 function finishWorkout() {

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Exercício - Bastion GYM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../src/css/styles.css">
+    <link rel="stylesheet" href="../src/css/treino-detalhes.css">
+    <style>
+        .exercises-selection-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+            width: 100%;
+        }
+        
+        .exercises-selection-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .exercises-selection-header h1 {
+            font-size: 2rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+        
+        .exercises-selection-header h1 span {
+            color: var(--primary-color);
+        }
+        
+        .exercises-selection-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+        
+        .exercises-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .exercise-selection-card {
+            background: var(--background-card);
+            border: 1px solid rgba(249, 115, 22, 0.2);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .exercise-selection-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
+        }
+        
+        .exercise-selection-card h3 {
+            color: var(--text-color);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .exercise-selection-card h3 i {
+            color: var(--primary-color);
+        }
+        
+        .exercise-selection-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .exercise-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .add-exercise-action {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .exercises-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .exercises-selection-container {
+                padding: 20px;
+            }
+            
+            .add-exercise-action {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="home-container">
+        <div class="workout-detail-container">
+            <div class="workout-detail-header">
+                <h1>Adicionar <span>Exercício</span></h1>
+                <button class="back-btn" onclick="window.location.href='TreinoDetalhes.html'">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </button>
+            </div>
+            
+            <div class="exercises-selection-container">
+                <div class="exercises-selection-header">
+                    <h1>Escolha um <span>Exercício</span></h1>
+                    <p>Selecione um exercício para adicionar ao seu treino</p>
+                </div>
+                
+                <div class="exercises-grid">
+                    <div class="exercise-selection-card" onclick="selectExercise('Agachamento')">
+                        <div class="exercise-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <h3>Agachamento</h3>
+                        <p>Exercício fundamental para pernas e glúteos, focado em força e hipertrofia.</p>
+                    </div>
+                    
+                    <div class="exercise-selection-card" onclick="selectExercise('Remada Curvada')">
+                        <div class="exercise-icon">
+                            <i class="fas fa-arrows-alt-v"></i>
+                        </div>
+                        <h3>Remada Curvada</h3>
+                        <p>Excelente para desenvolvimento das costas, melhora postura e força de tronco.</p>
+                    </div>
+                    
+                    <div class="exercise-selection-card" onclick="selectExercise('Desenvolvimento Militar')">
+                        <div class="exercise-icon">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                        <h3>Desenvolvimento Militar</h3>
+                        <p>Exercício composto para ombros e tríceps, essencial para força de membros superiores.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="home-footer">
+            <img src="../src/img/logo/logo_fundo_transparente.png" alt="Bastion GYM Logo" class="footer-logo">
+            <p>&copy; 2024 Bastion GYM. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+    
+    <script>
+        function selectExercise(exerciseName) {
+            // Em uma implementação real, isso enviaria o exercício selecionado para o backend
+            // e redirecionaria de volta para TreinoDetalhes.html com o exercício adicionado
+            alert('Exercício selecionado: ' + exerciseName + '\n\nEm produção, este exercício seria adicionado ao treino.');
+            window.location.href = 'TreinoDetalhes.html';
+        }
+    </script>
+</body>
+</html>

@@ -24,142 +24,14 @@
                 <button class="filter-btn" data-filter="inferiores" onclick="filterWorkouts('inferiores', this)">Inferiores</button>
             </div>
             
-            <div class="search-container">
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" class="search-input" placeholder="Pesquisar treinos...">
-            </div>
-            
             <div class="workouts-grid">
                 <div class="workout-card" data-category="superiores">
                     <div class="workout-image" style="background-image: url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80');">
-                        <span class="workout-badge">Popular</span>
+                        <span class="workout-badge">Superiores</span>
                     </div>
                     <div class="workout-content">
                         <h3>Força Completa</h3>
                         <p>Treino completo de força para todo o corpo, focado em hipertrofia e ganho de massa muscular.</p>
-                        <div class="workout-meta">
-                            <div class="workout-meta-item">
-                                <i class="fas fa-clock"></i>
-                                <span>45 min</span>
-                            </div>
-                            <div class="workout-meta-item">
-                                <i class="fas fa-fire"></i>
-                                <span>400 cal</span>
-                            </div>
-                            <div class="workout-meta-item">
-                                <i class="fas fa-dumbbell"></i>
-                                <span>Intermediário</span>
-                            </div>
-                        </div>
-                        <div class="workout-difficulty">
-                            <i class="fas fa-star difficulty-star active"></i>
-                            <i class="fas fa-star difficulty-star active"></i>
-                            <i class="fas fa-star difficulty-star active"></i>
-                            <i class="fas fa-star difficulty-star"></i>
-                            <i class="fas fa-star difficulty-star"></i>
-                        </div>
-                        <button class="workout-btn" onclick="window.location.href='TreinoDetalhes.html'">
-                            <i class="fas fa-play"></i> Iniciar Treino
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="workout-card" data-category="cardio">
-                    <div class="workout-image" style="background-image: url('https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?w=600&q=80');">
-                        <span class="workout-badge">Cardio</span>
-                    </div>
-                    <div class="workout-content">
-                        <h3>Cardio Intenso</h3>
-                        <p>Sessão de cardio de alta intensidade para queimar calorias e melhorar resistência.</p>
-                        <div class="workout-meta">
-                            <div class="workout-meta-item">
-                                <i class="fas fa-clock"></i>
-                                <span>30 min</span>
-                            </div>
-                            <div class="workout-meta-item">
-                                <i class="fas fa-fire"></i>
-                                <span>350 cal</span>
-                            </div>
-                            <div class="workout-meta-item">
-                                <i class="fas fa-dumbbell"></i>
-                                <span>Iniciante</span>
-                            </div>
-                        </div>
-                        <div class="workout-difficulty">
-                            <i class="fas fa-star difficulty-star active"></i>
-                            <i class="fas fa-star difficulty-star"></i>
-                            <i class="fas fa-star difficulty-star"></i>
-                            <i class="fas fa-star difficulty-star"></i>
-                            <i class="fas fa-star difficulty-star"></i>
-                        </div>
-                        <button class="workout-btn" onclick="window.location.href='TreinoDetalhes.html'">
-                            <i class="fas fa-play"></i> Iniciar Treino
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="workout-card" data-category="hiit">
-                    <div class="workout-image" style="background-image: url('https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80');">
-                        <span class="workout-badge">HIIT</span>
-                    </div>
-                    <div class="workout-content">
-                        <h3>HIIT Express</h3>
-                        <p>Treino intervalado de alta intensidade para máxima queima calórica em pouco tempo.</p>
-                        <div class="workout-meta">
-                            <div class="workout-meta-item">
-                                <i class="fas fa-clock"></i>
-                                <span>20 min</span>
-                            </div>
-                            <div class="workout-meta-item">
-                                <i class="fas fa-fire"></i>
-                                <span>300 cal</span>
-                            </div>
-                            <div class="workout-meta-item">
-                                <i class="fas fa-dumbbell"></i>
-                                <span>Avançado</span>
-                            </div>
-                        </div>
-                        <div class="workout-difficulty">
-                            <i class="fas fa-star difficulty-star active"></i>
-                            <i class="fas fa-star difficulty-star active"></i>
-                            <i class="fas fa-star difficulty-star active"></i>
-                            <i class="fas fa-star difficulty-star active"></i>
-                            <i class="fas fa-star difficulty-star"></i>
-                        </div>
-                        <button class="workout-btn" onclick="window.location.href='TreinoDetalhes.html'">
-                            <i class="fas fa-play"></i> Iniciar Treino
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="workout-card" data-category="flexibilidade">
-                    <div class="workout-image" style="background-image: url('https://images.unsplash.com/photo-1544367563-12123d8965cd?w=600&q=80');">
-                        <span class="workout-badge">Flexibilidade</span>
-                    </div>
-                    <div class="workout-content">
-                        <h3>Yoga & Flexibilidade</h3>
-                        <p>Sessão de yoga e alongamento para melhorar flexibilidade e reduzir estresse.</p>
-                        <div class="workout-meta">
-                            <div class="workout-meta-item">
-                                <i class="fas fa-clock"></i>
-                                <span>40 min</span>
-                            </div>
-                            <div class="workout-meta-item">
-                                <i class="fas fa-fire"></i>
-                                <span>150 cal</span>
-                            </div>
-                            <div class="workout-meta-item">
-                                <i class="fas fa-dumbbell"></i>
-                                <span>Iniciante</span>
-                            </div>
-                        </div>
-                        <div class="workout-difficulty">
-                            <i class="fas fa-star difficulty-star active"></i>
-                            <i class="fas fa-star difficulty-star"></i>
-                            <i class="fas fa-star difficulty-star"></i>
-                            <i class="fas fa-star difficulty-star"></i>
-                            <i class="fas fa-star difficulty-star"></i>
-                        </div>
                         <button class="workout-btn" onclick="window.location.href='TreinoDetalhes.html'">
                             <i class="fas fa-play"></i> Iniciar Treino
                         </button>
@@ -168,32 +40,11 @@
                 
                 <div class="workout-card" data-category="superiores">
                     <div class="workout-image" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80');">
-                        <span class="workout-badge">Força</span>
+                        <span class="workout-badge">Superiores</span>
                     </div>
                     <div class="workout-content">
                         <h3>Peito e Tríceps</h3>
                         <p>Foco específico em desenvolvimento de peito e tríceps com exercícios compostos.</p>
-                        <div class="workout-meta">
-                            <div class="workout-meta-item">
-                                <i class="fas fa-clock"></i>
-                                <span>35 min</span>
-                            </div>
-                            <div class="workout-meta-item">
-                                <i class="fas fa-fire"></i>
-                                <span>280 cal</span>
-                            </div>
-                            <div class="workout-meta-item">
-                                <i class="fas fa-dumbbell"></i>
-                                <span>Intermediário</span>
-                            </div>
-                        </div>
-                        <div class="workout-difficulty">
-                            <i class="fas fa-star difficulty-star active"></i>
-                            <i class="fas fa-star difficulty-star active"></i>
-                            <i class="fas fa-star difficulty-star active"></i>
-                            <i class="fas fa-star difficulty-star"></i>
-                            <i class="fas fa-star difficulty-star"></i>
-                        </div>
                         <button class="workout-btn" onclick="window.location.href='TreinoDetalhes.html'">
                             <i class="fas fa-play"></i> Iniciar Treino
                         </button>
@@ -202,32 +53,52 @@
                 
                 <div class="workout-card" data-category="inferiores">
                     <div class="workout-image" style="background-image: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80');">
-                        <span class="workout-badge">Pernas</span>
+                        <span class="workout-badge">Inferiores</span>
                     </div>
                     <div class="workout-content">
                         <h3>Pernas e Glúteos</h3>
                         <p>Treino completo de lower body para fortalecer pernas e glúteos.</p>
-                        <div class="workout-meta">
-                            <div class="workout-meta-item">
-                                <i class="fas fa-clock"></i>
-                                <span>50 min</span>
-                            </div>
-                            <div class="workout-meta-item">
-                                <i class="fas fa-fire"></i>
-                                <span>450 cal</span>
-                            </div>
-                            <div class="workout-meta-item">
-                                <i class="fas fa-dumbbell"></i>
-                                <span>Intermediário</span>
-                            </div>
-                        </div>
-                        <div class="workout-difficulty">
-                            <i class="fas fa-star difficulty-star active"></i>
-                            <i class="fas fa-star difficulty-star active"></i>
-                            <i class="fas fa-star difficulty-star active"></i>
-                            <i class="fas fa-star difficulty-star"></i>
-                            <i class="fas fa-star difficulty-star"></i>
-                        </div>
+                        <button class="workout-btn" onclick="window.location.href='TreinoDetalhes.html'">
+                            <i class="fas fa-play"></i> Iniciar Treino
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="workouts-grid">
+                <div class="workout-card" data-category="superiores">
+                    <div class="workout-image" style="background-image: url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80');">
+                        <span class="workout-badge">Superiores</span>
+                    </div>
+                    <div class="workout-content">
+                        <h3>Força Completa</h3>
+                        <p>Treino completo de força para todo o corpo, focado em hipertrofia e ganho de massa muscular.</p>
+                        <button class="workout-btn" onclick="window.location.href='TreinoDetalhes.html'">
+                            <i class="fas fa-play"></i> Iniciar Treino
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="workout-card" data-category="superiores">
+                    <div class="workout-image" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80');">
+                        <span class="workout-badge">Superiores</span>
+                    </div>
+                    <div class="workout-content">
+                        <h3>Peito e Tríceps</h3>
+                        <p>Foco específico em desenvolvimento de peito e tríceps com exercícios compostos.</p>
+                        <button class="workout-btn" onclick="window.location.href='TreinoDetalhes.html'">
+                            <i class="fas fa-play"></i> Iniciar Treino
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="workout-card" data-category="inferiores">
+                    <div class="workout-image" style="background-image: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80');">
+                        <span class="workout-badge">Inferiores</span>
+                    </div>
+                    <div class="workout-content">
+                        <h3>Pernas e Glúteos</h3>
+                        <p>Treino completo de lower body para fortalecer pernas e glúteos.</p>
                         <button class="workout-btn" onclick="window.location.href='TreinoDetalhes.html'">
                             <i class="fas fa-play"></i> Iniciar Treino
                         </button>

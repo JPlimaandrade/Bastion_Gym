@@ -42,38 +42,6 @@
     flex-wrap: wrap;
 }
 
-.search-container {
-    max-width: 600px;
-    margin: 0 auto 40px;
-    position: relative;
-}
-
-.search-input {
-    width: 100%;
-    padding: 15px 20px 15px 50px;
-    background: var(--secondary-light);
-    border: 1px solid rgba(249, 115, 22, 0.3);
-    border-radius: var(--border-radius);
-    color: var(--text-color);
-    font-size: 1rem;
-    outline: none;
-    transition: var(--transition);
-}
-
-.search-input:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
-}
-
-.search-icon {
-    position: absolute;
-    left: 18px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--primary-color);
-    font-size: 1.2rem;
-}
-
 .filter-btn {
     padding: 12px 24px;
     background: var(--secondary-light);
@@ -158,40 +126,6 @@
     color: var(--text-muted);
     margin-bottom: 20px;
     line-height: 1.6;
-}
-
-.workout-meta {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-}
-
-.workout-meta-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-}
-
-.workout-meta-item i {
-    color: var(--primary-color);
-}
-
-.workout-difficulty {
-    display: flex;
-    gap: 5px;
-    margin-bottom: 20px;
-}
-
-.difficulty-star {
-    color: var(--text-muted);
-    font-size: 1rem;
-}
-
-.difficulty-star.active {
-    color: var(--primary-color);
 }
 
 .workout-btn {

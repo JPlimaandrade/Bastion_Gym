@@ -36,23 +36,5 @@ function filterWorkouts(filter, button) {
  * Inicializa funcionalidades da página de treinos
  */
 document.addEventListener('DOMContentLoaded', function() {
-    // Busca por texto
-    const searchInput = document.getElementById('searchInput');
-    if (searchInput) {
-        searchInput.addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            const workoutCards = document.querySelectorAll('.workout-card');
-            
-            workoutCards.forEach(card => {
-                const title = card.querySelector('h3').textContent.toLowerCase();
-                const description = card.querySelector('p').textContent.toLowerCase();
-                
-                if (title.includes(searchTerm) || description.includes(searchTerm)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    }
+    // Funcionalidades de inicialização podem ser adicionadas aqui
 });
