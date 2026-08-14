@@ -13,28 +13,27 @@ public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
 
-    
     public UsuarioService(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
     }
 
-    // Salvar usuario
+    // Salvar usuario CREATE
     public Usuario salvar(Usuario usuario) {
          usuario.setDataCadastro(LocalDate.now()); // Define a data de cadastro atual
         return usuarioRepository.save(usuario);
     }
 
-    // Listar todos os usuarios
+    // Listar todos os usuarios READ
     public List<Usuario> listarTodos() {
         return usuarioRepository.findAll();
     }
 
-    // Buscar usuario por ID
+    // Buscar usuario por ID READ
     public Optional<Usuario> buscarPorId(Long id) {
         return usuarioRepository.findById(id);
     }
 
-    // Atualizar usuario se existir
+    // Atualizar usuario se existir UPDATE
     public Usuario atualizar(Long id, Usuario usuario) {
 
         Usuario usuarioExistente = usuarioRepository.findById(id)
@@ -51,7 +50,7 @@ public class UsuarioService {
         return usuarioRepository.save(usuarioExistente);
     }
 
-    // Excluir usuario se existir
+    // Excluir usuario se existir DELETE
     public void excluir(Long id) {
 
         if (!usuarioRepository.existsById(id)) {

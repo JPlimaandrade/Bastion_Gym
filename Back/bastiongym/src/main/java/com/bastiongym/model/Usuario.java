@@ -4,10 +4,12 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "usuario")
 public class Usuario {
@@ -40,35 +42,5 @@ public class Usuario {
 
     @Column(name = "data_cadastro")
     private LocalDate dataCadastro;
-
-    //Construtor
-
-    //Construtor vazio 
-    // Obrigatório para o JPA
-    public Usuario() {
-    }
-
-    //Construtor com todos os campos
-    //Facilita a criação de objetos usuario manualmente
-    //Sem id_usuario pois o banco gera automaticamente
-    public Usuario( 
-        String nome, 
-        String email, 
-        String senha, 
-        String telefone, 
-        BigDecimal altura, 
-        BigDecimal peso, 
-        String foto, 
-        LocalDate dataCadastro) 
-    {
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.telefone = telefone;
-        this.altura = altura;
-        this.peso = peso;
-        this.foto = foto;
-        this.dataCadastro = dataCadastro;
-    }
-    
+   
 }
