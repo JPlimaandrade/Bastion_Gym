@@ -2,6 +2,7 @@ package com.bastiongym.service;
 
 import com.bastiongym.model.Usuario;
 import com.bastiongym.repository.UsuarioRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -12,12 +13,15 @@ import java.util.Optional;
 public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UsuarioService(UsuarioRepository usuarioRepository) {
+    public UsuarioService(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
         this.usuarioRepository = usuarioRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public Usuario salvar(Usuario usuario) {
+        usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
         usuario.setDataCadastro(LocalDate.now());
         return usuarioRepository.save(usuario);
     }
@@ -35,7 +39,12 @@ public class UsuarioService {
                 .map(usuarioExistente -> {
                     usuarioExistente.setNome(usuario.getNome());
                     usuarioExistente.setEmail(usuario.getEmail());
-                    usuarioExistente.setSenha(usuario.getSenha());
+
+                    // só re-hasheia se veio uma senha nova no body
+                    if (usuario.getSenha() != null && !usuario.getSenha().isBlank()) {
+                        usuarioExistente.setSenha(passwordEncoder.encode(usuario.getSenha()));
+                    }
+
                     usuarioExistente.setTelefone(usuario.getTelefone());
                     usuarioExistente.setAltura(usuario.getAltura());
                     usuarioExistente.setPeso(usuario.getPeso());
