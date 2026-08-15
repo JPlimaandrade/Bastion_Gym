@@ -1,8 +1,11 @@
 package com.bastiongym.controller;
 
+import com.bastiongym.dto.UsuarioResponseDTO;
 import com.bastiongym.model.Usuario;
 import com.bastiongym.service.UsuarioService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -15,33 +18,39 @@ public class UsuarioController {
         this.usuarioService = usuarioService;
     }
 
-    // GET todos os usuarios
     @GetMapping
-    public List<Usuario> listarTodos() {
-        return usuarioService.listarTodos();
-    }
-    // GET usuario por id
-    @GetMapping("/{id}")
-    public Usuario buscarPorId(@PathVariable Long id) {
-        return usuarioService.buscarPorId(id)
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
-    }
-    
-    // POST criar usuario
-    @PostMapping
-    public Usuario salvar(@RequestBody Usuario usuario) {
-        return usuarioService.salvar(usuario);
-    }
-    
-    // PUT atualizar usuario
-    @PutMapping("/{id}")
-    public Usuario atualizar(@PathVariable Long id, @RequestBody Usuario usuario) {
-        return usuarioService.atualizar(id, usuario);
+    public List<UsuarioResponseDTO> listarTodos() {
+        return usuarioService.listarTodos().stream()
+                .map(UsuarioResponseDTO::fromEntity)
+                .toList();
     }
 
-    // DELETE deletar usuario
+    @GetMapping("/{id}")
+    public ResponseEntity<UsuarioResponseDTO> buscarPorId(@PathVariable Long id) {
+        return usuarioService.buscarPorId(id)
+                .map(UsuarioResponseDTO::fromEntity)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping
+    public UsuarioResponseDTO salvar(@RequestBody Usuario usuario) {
+        return UsuarioResponseDTO.fromEntity(usuarioService.salvar(usuario));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<UsuarioResponseDTO> atualizar(@PathVariable Long id, @RequestBody Usuario usuario) {
+        return usuarioService.atualizar(id, usuario)
+                .map(UsuarioResponseDTO::fromEntity)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @DeleteMapping("/{id}")
-    public void excluir(@PathVariable Long id) {
-        usuarioService.excluir(id);
+    public ResponseEntity<Void> excluir(@PathVariable Long id) {
+        if (!usuarioService.deletar(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.noContent().build();
     }
 }

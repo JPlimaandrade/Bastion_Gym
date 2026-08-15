@@ -17,47 +17,39 @@ public class UsuarioService {
         this.usuarioRepository = usuarioRepository;
     }
 
-    // Salvar usuario CREATE
     public Usuario salvar(Usuario usuario) {
-         usuario.setDataCadastro(LocalDate.now()); // Define a data de cadastro atual
+        usuario.setDataCadastro(LocalDate.now());
         return usuarioRepository.save(usuario);
     }
 
-    // Listar todos os usuarios READ
     public List<Usuario> listarTodos() {
         return usuarioRepository.findAll();
     }
 
-    // Buscar usuario por ID READ
     public Optional<Usuario> buscarPorId(Long id) {
         return usuarioRepository.findById(id);
     }
 
-    // Atualizar usuario se existir UPDATE
-    public Usuario atualizar(Long id, Usuario usuario) {
-
-        Usuario usuarioExistente = usuarioRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
-
-        usuarioExistente.setNome(usuario.getNome());
-        usuarioExistente.setEmail(usuario.getEmail());
-        usuarioExistente.setSenha(usuario.getSenha());
-        usuarioExistente.setTelefone(usuario.getTelefone());
-        usuarioExistente.setAltura(usuario.getAltura());
-        usuarioExistente.setPeso(usuario.getPeso());
-        usuarioExistente.setFoto(usuario.getFoto());
-
-        return usuarioRepository.save(usuarioExistente);
+    public Optional<Usuario> atualizar(Long id, Usuario usuario) {
+        return usuarioRepository.findById(id)
+                .map(usuarioExistente -> {
+                    usuarioExistente.setNome(usuario.getNome());
+                    usuarioExistente.setEmail(usuario.getEmail());
+                    usuarioExistente.setSenha(usuario.getSenha());
+                    usuarioExistente.setTelefone(usuario.getTelefone());
+                    usuarioExistente.setAltura(usuario.getAltura());
+                    usuarioExistente.setPeso(usuario.getPeso());
+                    usuarioExistente.setFoto(usuario.getFoto());
+                    usuarioExistente.setDataNascimento(usuario.getDataNascimento());
+                    return usuarioRepository.save(usuarioExistente);
+                });
     }
 
-    // Excluir usuario se existir DELETE
-    public void excluir(Long id) {
-
+    public boolean deletar(Long id) {
         if (!usuarioRepository.existsById(id)) {
-            throw new RuntimeException("Usuário não encontrado");
+            return false;
         }
-
         usuarioRepository.deleteById(id);
+        return true;
     }
 }
-

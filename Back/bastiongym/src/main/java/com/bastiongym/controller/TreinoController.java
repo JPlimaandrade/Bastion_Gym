@@ -1,5 +1,6 @@
 package com.bastiongym.controller;
 
+import com.bastiongym.dto.TreinoResponseDTO;
 import com.bastiongym.model.Treino;
 import com.bastiongym.service.TreinoService;
 import org.springframework.http.ResponseEntity;
@@ -17,46 +18,39 @@ public class TreinoController {
         this.treinoService = treinoService;
     }
 
-    // GET todos os treino
     @GetMapping
-    public List<Treino> listarTodos() {
-        return treinoService.listarTodos();
+    public List<TreinoResponseDTO> listarTodos() {
+        return treinoService.listarTodos().stream()
+                .map(TreinoResponseDTO::fromEntity)
+                .toList();
     }
-    // GET treino por id
+
     @GetMapping("/{id}")
-    public ResponseEntity<Treino> buscarPorId(@PathVariable Long id) {
-
+    public ResponseEntity<TreinoResponseDTO> buscarPorId(@PathVariable Long id) {
         return treinoService.buscarPorId(id)
+                .map(TreinoResponseDTO::fromEntity)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // POST criar treino
     @PostMapping
-    public Treino salvar(@RequestBody Treino treino) {
-        return treinoService.salvar(treino);
+    public TreinoResponseDTO salvar(@RequestBody Treino treino) {
+        return TreinoResponseDTO.fromEntity(treinoService.salvar(treino));
     }
 
-    // PUT atualizar treino
     @PutMapping("/{id}")
-    public ResponseEntity<Treino> atualizar(
-            @PathVariable Long id,
-            @RequestBody Treino treino) {
-
+    public ResponseEntity<TreinoResponseDTO> atualizar(@PathVariable Long id, @RequestBody Treino treino) {
         return treinoService.atualizar(id, treino)
+                .map(TreinoResponseDTO::fromEntity)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // DELETE deletar treino
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable Long id) {
-
         if (!treinoService.deletar(id)) {
             return ResponseEntity.notFound().build();
         }
-
         return ResponseEntity.noContent().build();
     }
-
 }

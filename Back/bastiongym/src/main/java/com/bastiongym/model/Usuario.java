@@ -42,5 +42,8 @@ public class Usuario {
 
     @Column(name = "data_cadastro")
     private LocalDate dataCadastro;
+
+    @Column(name = "data_nascimento")
+    private LocalDate dataNascimento;
    
 }
